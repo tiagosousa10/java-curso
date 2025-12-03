@@ -18,7 +18,14 @@ public class CalculadoraIdade {
 
         System.out.println("Resultado: ");
         int resultado = anoAtual - anoNascimento;
-
         System.out.println(resultado);
+
+        if(resultado < 18) {
+            System.out.println("Menor do que 18");
+        } else if( resultado > 18 && resultado < 65) {
+            System.out.println("Adulto");
+        } else  {
+            System.out.println("Reformado");
+        }
     }
 }
