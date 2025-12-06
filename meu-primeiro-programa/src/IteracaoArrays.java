@@ -27,5 +27,22 @@ public class IteracaoArrays {
         for(String email : emails ){
             System.out.println(email);
         }
+
+        int[] numbers = new int[5];
+        numbers[0]= 4;
+        numbers[2]= 3;
+        numbers[3]= 2;
+        numbers[4]= 1;
+
+        for(int number : numbers ) {
+            System.out.println(number);
+        }
+
+        String[] names = {"Tiago", "Andre", "John", "Bob", "Jane"};
+
+        for(int i = names.length -1; i >= 0; i--) {
+            System.out.println(names[i]);
+        }
+
     }
 }
