@@ -20,5 +20,10 @@ public class InicioArrays {
         System.out.println(telefones[0]);
         System.out.println(telefones[1]);
 
+        int[] outrosNumeros = new int[3];
+
+        outrosNumeros[0] = 1;
+
+
     }
 }
