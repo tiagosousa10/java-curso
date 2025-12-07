@@ -8,4 +8,8 @@ public class Conta {
     void imprimirSaldo() {
         System.out.println(this.saldo);
     }
+
+    void verTitular() {
+        System.out.println(titular);
+    }
 }
