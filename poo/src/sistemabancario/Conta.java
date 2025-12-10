@@ -6,10 +6,8 @@ public class Conta {
     double saldo;
 
     void imprimirSaldo() {
-        System.out.println(this.saldo);
+        System.out.println("Numero da Conta: " + this.numero + "| Saldo atual: " + this.saldo);
     }
 
-    void verTitular() {
-        System.out.println(titular);
-    }
+
 }
