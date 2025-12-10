@@ -19,6 +19,19 @@ public class Conta {
 
     }
 
+    public void modificarSaldo(double saldo) {
+
+        if (saldo >= 0) {
+            this.saldo = saldo;
+        } else {
+            System.out.println("Saldo Negativo.");
+        }
+    }
+
+    public double obterSaldo() {
+        return this.saldo;
+    }
+
     public void imprimirSaldo() {
         System.out.println("Numero da Conta: " + this.numero + "| Saldo atual: " + this.saldo);
     }

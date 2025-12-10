@@ -7,6 +7,7 @@ public class Main {
         System.out.println(fulano.nome + " - " + fulano.cpf);
 
         Conta contaFulano = new Conta(fulano, 1000, 50);
+        System.out.println("Saldo: " + " - " + contaFulano.obterSaldo());
 
 
         Banco sistemaBancario = new Banco();
@@ -32,6 +33,9 @@ public class Main {
 
 
         Conta contaCicrano = new Conta(cicrano, 1000, 50);
+        contaCicrano.modificarSaldo(50);
+        contaCicrano.imprimirSaldo();
+
 
         System.out.println("Transferindo 50 para o cicrano");
 
