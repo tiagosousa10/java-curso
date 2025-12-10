@@ -3,14 +3,10 @@ package sistemabancario;
 public class Main {
     public static void main(String[] args) {
 
-        Cliente fulano = new Cliente();
-        fulano.nome = "Fulano";
-        fulano.cpf = "012345567980";
+        Cliente fulano = new Cliente("012345567980", "Fulano");
+        System.out.println(fulano.nome + " - " + fulano.cpf);
 
-        Conta contaFulano = new Conta();
-        contaFulano.titular = fulano;
-        contaFulano.numero = 1000;
-        contaFulano.saldo = 50;
+        Conta contaFulano = new Conta(fulano, 1000, 50);
 
 
         Banco sistemaBancario = new Banco();
@@ -32,15 +28,10 @@ public class Main {
 
         contaFulano.imprimirSaldo();
 
-        Cliente cicrano = new Cliente();
-        cicrano.nome = "Cicrano";
-        cicrano.cpf = "321123123";
+        Cliente cicrano = new Cliente("321123123", "Cicrano");
 
 
-        Conta contaCicrano = new Conta();
-        contaCicrano.titular = cicrano;
-        contaCicrano.numero = 50;
-        contaCicrano.saldo = 0;
+        Conta contaCicrano = new Conta(cicrano, 1000, 50);
 
         System.out.println("Transferindo 50 para o cicrano");
 

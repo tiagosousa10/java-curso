@@ -12,7 +12,7 @@ public class Banco {
         double saldoAtual = conta.saldo;
         double novoSaldo = saldoAtual - valor;
 
-        if(novoSaldo < 0) {
+        if (novoSaldo < 0) {
             System.out.println("Saldo insuficiente");
         } else {
             conta.saldo = novoSaldo;
@@ -24,7 +24,7 @@ public class Banco {
         double saldoAtualOrigem = origem.saldo;
         double novoSaldoOrigem = saldoAtualOrigem - valor;
 
-        if(novoSaldoOrigem < 0) {
+        if (novoSaldoOrigem < 0) {
             System.out.println("Saldo insuficiente");
         } else {
             origem.saldo = novoSaldoOrigem;
