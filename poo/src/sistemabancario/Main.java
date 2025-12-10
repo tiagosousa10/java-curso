@@ -1,10 +1,12 @@
 package sistemabancario;
 
 public class Main {
+
+
     public static void main(String[] args) {
 
-        Cliente fulano = new Cliente("012345567980", "Fulano");
 
+        Cliente fulano = new Cliente("012345567980", "Fulano");
 
         Conta contaFulano = new Conta(fulano, 1000, 50);
         System.out.println("Saldo: " + " - " + contaFulano.getSaldo());
@@ -29,9 +31,12 @@ public class Main {
 
         contaFulano.imprimirSaldo();
 
+        /*
         Cliente cicrano = new Cliente();
         cicrano.setNome("Cicrano Bonito");
         cicrano.setCpf("123123123");
+        */
+        Cliente cicrano = new Cliente("012345567980", "Cicrano");
 
         Conta contaCicrano = new Conta(cicrano, 1000, 50);
         contaCicrano.setSaldo(50);
@@ -45,6 +50,9 @@ public class Main {
 
         contaFulano.imprimirSaldo();
         contaCicrano.imprimirSaldo();
+
+
+        System.out.println("Quantidade de clientes: " + Cliente.quantidadeClientes);
 
     }
 }

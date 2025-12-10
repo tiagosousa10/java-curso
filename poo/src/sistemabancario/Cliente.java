@@ -1,6 +1,10 @@
 package sistemabancario;
 
 public class Cliente {
+
+    public static int quantidadeClientes;
+
+
     private String cpf;
     private String nome;
 
@@ -10,6 +14,7 @@ public class Cliente {
     public Cliente(String cpf, String nome) {
         this.cpf = cpf;
         this.nome = nome;
+        incrementarClientes();
     }
 
     //get & set
@@ -27,6 +32,10 @@ public class Cliente {
 
     public String getNome() {
         return this.nome;
+    }
+
+    public static void incrementarClientes() {
+        Cliente.quantidadeClientes++;
     }
 
 }
