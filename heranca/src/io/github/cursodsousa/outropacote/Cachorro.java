@@ -1,4 +1,10 @@
 package io.github.cursodsousa.outropacote;
 
-public class Cachorro {
+import io.github.cursodsousa.heranca.Animal;
+
+public class Cachorro extends Animal {
+
+    public void teste() {
+        imprimirDados();
+    }
 }
