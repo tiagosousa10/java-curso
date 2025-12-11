@@ -2,7 +2,7 @@ package io.github.cursodsousa.outropacote;
 
 public class Main {
     public static void main(String[] args) {
-        Cachorro cachorro = new Cachorro();
+        Cachorro cachorro = new Cachorro(13);
 
         cachorro.setNome("Roy");
         cachorro.setIdade(5);
