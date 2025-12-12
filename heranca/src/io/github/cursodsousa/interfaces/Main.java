@@ -2,6 +2,13 @@ package io.github.cursodsousa.interfaces;
 
 public class Main {
     public static void main(String[] args) {
+
+        CarroHibrido carroHibrido = new CarroHibrido();
+        carroHibrido.fazAlgo();
+        CarroEletrico.imprimirAlgo();
+
+
+
         Autenticador autenticador = new Autenticador();
 
         Autenticacao email = new CredencialEmail("teste@teste.com", "123123");
