@@ -2,6 +2,8 @@ package io.github.cursodsousa.clientes.apresentacao;
 
 import io.github.cursodsousa.clientes.dominio.Cliente;
 import io.github.cursodsousa.clientes.dominio.enums.TipoSexo;
+import io.github.cursodsousa.clientes.logicanegocio.Cadastro;
+import io.github.cursodsousa.clientes.logicanegocio.LogicaCadastroClienteFake;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -86,7 +88,9 @@ public class TelaCadastro extends JFrame {
                 cliente.setCpf(campoCpf.getText());
                 cliente.setSexo((TipoSexo) campoSexo.getSelectedItem());
 
-                JOptionPane.showMessageDialog(null, cliente.getNome() + " salvou com sucesso!");
+                Cadastro<Cliente> logicaCadastro = new LogicaCadastroClienteFake();
+                logicaCadastro.salvar(cliente);
+
             }
         };
     }
