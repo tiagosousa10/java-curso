@@ -1,6 +1,11 @@
 package io.github.cursodsousa.clientes.apresentacao;
 
+import io.github.cursodsousa.clientes.dominio.Cliente;
+import io.github.cursodsousa.clientes.dominio.enums.TipoSexo;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaCadastro extends JFrame {
 
@@ -10,7 +15,9 @@ public class TelaCadastro extends JFrame {
 
     private JTextField campoNome;
     private JTextField campoCpf;
-    private JComboBox<String> campoSexo;
+    private JComboBox<TipoSexo> campoSexo;
+
+    private JButton botaoSalvar;
 
     public TelaCadastro() {
         construirTela();
@@ -51,20 +58,38 @@ public class TelaCadastro extends JFrame {
         getContentPane().add(labelSexo);
 
 
-        String[] tiposSexo = {"M", "F", "O"};
-        campoSexo = new JComboBox<>(tiposSexo);
+        TipoSexo[] tipoSexo = {null,TipoSexo.M, TipoSexo.F, TipoSexo.O};
+        campoSexo = new JComboBox<>(tipoSexo);
         campoSexo.setBounds(20,120,200,20);
         getContentPane().add(campoSexo);
     }
 
     private void adicionarBotoes(){
+        botaoSalvar = new JButton("Salvar");
+        botaoSalvar.setBounds(20,160,200,20);
 
+        ActionListener acaoBotaoSalvar = this.botaoSalvarActionListener();
+        botaoSalvar.addActionListener(acaoBotaoSalvar);
+        getContentPane().add(botaoSalvar);
     }
 
     private void adicionarComponentesFoto() {
 
     }
 
+    private ActionListener botaoSalvarActionListener() {
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Cliente cliente = new Cliente();
+                cliente.setNome(campoNome.getText());
+                cliente.setCpf(campoCpf.getText());
+                cliente.setSexo((TipoSexo) campoSexo.getSelectedItem());
+
+                JOptionPane.showMessageDialog(null, cliente.getNome() + " salvou com sucesso!");
+            }
+        };
+    }
 
 
 }
