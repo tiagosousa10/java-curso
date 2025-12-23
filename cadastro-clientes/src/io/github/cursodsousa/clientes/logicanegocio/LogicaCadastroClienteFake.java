@@ -13,6 +13,11 @@ public class LogicaCadastroClienteFake implements Cadastro<Cliente> {
     }
 
     @Override
+    public void imprimirRegistros() {
+
+    }
+
+    @Override
     public Cliente buscar(UUID codigo) {
         return null;
     }
