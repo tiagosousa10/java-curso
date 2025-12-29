@@ -77,6 +77,14 @@ public class Cliente implements Comparable<Cliente> {
 
     @Override
     public int compareTo(Cliente o) {
-        return 0;
+
+        int fator = this.nome.compareTo(o.getNome());
+        if(fator == 0) {
+            fator = this.sexo.equals(TipoSexo.F) ? -1: 1;
+        }
+
+        return fator;
     }
+
+
 }
