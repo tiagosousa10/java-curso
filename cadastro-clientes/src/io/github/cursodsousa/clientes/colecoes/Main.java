@@ -7,6 +7,26 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+
+        Map<Integer,String> mapa = new HashMap<>();
+        mapa.put(1,"Fulano");
+        mapa.put(2,"Cicrano");
+        mapa.put(3,"Maria");
+
+        String nome = mapa.get(1);
+        System.out.println(nome);
+
+        mapa.remove(1);
+
+        System.out.println(mapa.get(1));
+
+        boolean contemChave = mapa.containsKey(1);
+
+        System.out.println("Contem a chave 1?: " + contemChave);
+
+    }
+
+    private static void TrabalhandoComOrdenacaoDeColecoes() {
         Cliente cliente = new Cliente();
         cliente.setCpf("0123");
         cliente.setNome("Rio Grande");
@@ -29,7 +49,6 @@ public class Main {
         for( Cliente c : clientes) {
             System.out.println(c);
         }
-
     }
 
     private static void repositorioComSet() {
