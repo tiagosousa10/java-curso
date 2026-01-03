@@ -2,6 +2,7 @@ package io.github.cursodsousa.clientes.apresentacao;
 
 import io.github.cursodsousa.clientes.dominio.Cliente;
 import io.github.cursodsousa.clientes.dominio.enums.TipoSexo;
+import io.github.cursodsousa.clientes.dominio.exception.CpfInvalidoException;
 import io.github.cursodsousa.clientes.logicanegocio.Cadastro;
 import io.github.cursodsousa.clientes.logicanegocio.LogicaCadastroClienteFake;
 import io.github.cursodsousa.clientes.logicanegocio.LogicaCadastroMemoria;
@@ -31,7 +32,7 @@ public class TelaCadastro extends JFrame {
 
     private void construirTela() {
 
-        setSize(600,500);
+        setSize(600, 500);
         setTitle("Cadastro de Clientes");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
@@ -44,35 +45,35 @@ public class TelaCadastro extends JFrame {
 
     private void adicionarCampos() {
         labelNome = new JLabel("Nome:");
-        labelNome.setBounds(20,20,200,20);
+        labelNome.setBounds(20, 20, 200, 20);
         getContentPane().add(labelNome);
 
         campoNome = new JTextField();
-        campoNome.setBounds(20,40,200,20);
+        campoNome.setBounds(20, 40, 200, 20);
         getContentPane().add(campoNome);
 
         labelCpf = new JLabel("CPF:");
-        labelCpf.setBounds(20,60,200,20);
+        labelCpf.setBounds(20, 60, 200, 20);
         getContentPane().add(labelCpf);
 
         campoCpf = new JTextField();
-        campoCpf.setBounds(20,80,200,20);
+        campoCpf.setBounds(20, 80, 200, 20);
         getContentPane().add(campoCpf);
 
         labelSexo = new JLabel("Sexo:");
-        labelSexo.setBounds(20,100,200,20);
+        labelSexo.setBounds(20, 100, 200, 20);
         getContentPane().add(labelSexo);
 
 
-        TipoSexo[] tipoSexo = {null,TipoSexo.M, TipoSexo.F, TipoSexo.O};
+        TipoSexo[] tipoSexo = {null, TipoSexo.M, TipoSexo.F, TipoSexo.O};
         campoSexo = new JComboBox<>(tipoSexo);
-        campoSexo.setBounds(20,120,200,20);
+        campoSexo.setBounds(20, 120, 200, 20);
         getContentPane().add(campoSexo);
     }
 
-    private void adicionarBotoes(){
+    private void adicionarBotoes() {
         botaoSalvar = new JButton("Salvar");
-        botaoSalvar.setBounds(20,160,200,20);
+        botaoSalvar.setBounds(20, 160, 200, 20);
 
         ActionListener acaoBotaoSalvar = this.botaoSalvarActionListener();
         botaoSalvar.addActionListener(acaoBotaoSalvar);
@@ -92,9 +93,15 @@ public class TelaCadastro extends JFrame {
                 cliente.setCpf(campoCpf.getText());
                 cliente.setSexo((TipoSexo) campoSexo.getSelectedItem());
 
-                logicaCadastro.salvar(cliente);
+                try {
+                    logicaCadastro.salvar(cliente);
+                    logicaCadastro.imprimirRegistros();
+                } catch (CpfInvalidoException ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
 
-                logicaCadastro.imprimirRegistros();
 
             }
         };
