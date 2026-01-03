@@ -31,5 +31,4 @@ public class Banco {
             double novoSaldoDestino = destino.getSaldo() + valor;
             destino.setSaldo(novoSaldoDestino);
         }
-    }
-}
+    }}
