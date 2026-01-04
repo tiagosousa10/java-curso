@@ -7,6 +7,7 @@ public class Main {
         tamanhoString();
         pegarCaracteres();
         trabalhandoComSubstring();
+        exemploIndexOf();
     }
 
     private static void tamanhoString() {
@@ -23,5 +24,24 @@ public class Main {
     private static void trabalhandoComSubstring() {
     String pedaco = valor.substring(0, 2);
     System.out.println(pedaco);
+    }
+
+    private static void exemploIndexOf() {
+        int indice = valor.indexOf("R"); // -1 é nao encontrado
+        System.out.println("indice da letra a: " + indice);
+
+        String nome = "Pedro da Silva";
+
+        indice = valor.indexOf("Silva");
+
+        System.out.println(("Indice encontrado: " + indice));
+
+        if(nome.indexOf("Sousa") != -1){
+            System.out.println("Encontrei! + " + nome);
+
+        } else {
+            System.out.println("Não encontrei.");
+        }
+
     }
 }
