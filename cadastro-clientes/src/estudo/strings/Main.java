@@ -1,5 +1,7 @@
 package estudo.strings;
 
+import java.util.Locale;
+
 public class Main {
     static String valor = "Arroz";
 
@@ -8,6 +10,8 @@ public class Main {
         pegarCaracteres();
         trabalhandoComSubstring();
         exemploIndexOf();
+        exemplosCase();
+        removerEspacos();
     }
 
     private static void tamanhoString() {
@@ -43,5 +47,25 @@ public class Main {
             System.out.println("Não encontrei.");
         }
 
+    }
+
+    private static void exemplosCase() {
+        String string = "Silva";
+
+        String maiuscula = string.toUpperCase();
+        System.out.println(maiuscula);
+
+        String minuscula = string.toLowerCase();
+        System.out.println(minuscula);
+
+        System.out.println("String original: "+ string);
+
+    }
+
+    private static void removerEspacos() {
+        String string = "Tiago de Sousa";
+        String semEspacos = string.trim();
+        System.out.println(semEspacos);
+        System.out.println(string.length());
     }
 }
