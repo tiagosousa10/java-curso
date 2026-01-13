@@ -87,13 +87,7 @@ public class TelaCadastro extends JFrame {
     }
 
     private void adicionarComponentesFoto() {
-        String caminhoArquivo = "/io/github/cursodsousa/clientes/apresentacao/img.jpg";
-        URL localizacao = getClass().getResource(caminhoArquivo);
-        ImageIcon imageIcon = new ImageIcon(localizacao);
-
-        Image imageRedimensionada = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-
-        ImageIcon imageIcon1 = new ImageIcon(imageRedimensionada);
+        ImageIcon imageIcon1 = obterImagemPadraoFoto();
 
         labelFoto = new JLabel();
         labelFoto.setIcon(imageIcon1);
@@ -107,6 +101,17 @@ public class TelaCadastro extends JFrame {
         botaoEscolherFoto.addActionListener(botaoEscolherFotoActionListener());
 
         getContentPane().add(botaoEscolherFoto);
+    }
+
+    private ImageIcon obterImagemPadraoFoto() {
+        String caminhoArquivo = "/io/github/cursodsousa/clientes/apresentacao/img.jpg";
+        URL localizacao = getClass().getResource(caminhoArquivo);
+        ImageIcon imageIcon = new ImageIcon(localizacao);
+
+        Image imageRedimensionada = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+
+        ImageIcon imageIcon1 = new ImageIcon(imageRedimensionada);
+        return imageIcon1;
     }
 
     private ActionListener botaoEscolherFotoActionListener() {
@@ -140,7 +145,16 @@ public class TelaCadastro extends JFrame {
 
                 try {
                     logicaCadastro.salvar(cliente);
-                    logicaCadastro.imprimirRegistros();
+                    campoNome.setText("");
+                    campoCpf.setText("");
+                    campoSexo.setSelectedIndex(0);
+
+                    labelFoto.setIcon(TelaCadastro.this.obterImagemPadraoFoto());
+
+                    TelaCadastro.this.adicionarComponentesFoto();
+                    JOptionPane.showMessageDialog(null, "Cliente Cadastrado!");
+
+
                 } catch (CpfInvalidoException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 } catch (Exception ex) {

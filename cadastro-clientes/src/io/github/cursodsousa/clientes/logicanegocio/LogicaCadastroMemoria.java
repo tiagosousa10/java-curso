@@ -2,6 +2,7 @@ package io.github.cursodsousa.clientes.logicanegocio;
 
 import io.github.cursodsousa.clientes.dominio.Cliente;
 import io.github.cursodsousa.clientes.dominio.exception.CpfInvalidoException;
+import io.github.cursodsousa.clientes.utilitario.GerenciadorArquivo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class LogicaCadastroMemoria implements Cadastro<Cliente> {
     public void salvar(Cliente cliente) throws CpfInvalidoException {
         ValidadorCliente.validar(cliente);
         this.lista.add(cliente);
+        GerenciadorArquivo.persistirArquivo(cliente.getNome() + ".jpg", cliente.getFoto());
     }
 
     @Override

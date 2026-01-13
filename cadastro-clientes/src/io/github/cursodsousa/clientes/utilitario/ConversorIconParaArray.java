@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 public class ConversorIconParaArray {
-    private static PrintStream System.out;
+    private static void PrintStream (){
+        System.out.println("Print!");
+    }
 
     public static byte[] converter (Icon icon) {
         if(icon == null) {
