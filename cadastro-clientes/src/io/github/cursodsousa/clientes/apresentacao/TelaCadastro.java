@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.net.URL;
 
 public class TelaCadastro extends JFrame {
@@ -25,6 +26,7 @@ public class TelaCadastro extends JFrame {
     private JComboBox<TipoSexo> campoSexo;
 
     private JButton botaoSalvar;
+    private JButton botaoEscolherFoto;
 
     private Cadastro<Cliente> logicaCadastro;
 
@@ -88,15 +90,39 @@ public class TelaCadastro extends JFrame {
         URL localizacao = getClass().getResource(caminhoArquivo);
         ImageIcon imageIcon = new ImageIcon(localizacao);
 
-        Image imageRedimensionada = imageIcon.getImage().getScaledInstance(200,200,Image.SCALE_SMOOTH);
+        Image imageRedimensionada = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
 
         ImageIcon imageIcon1 = new ImageIcon(imageRedimensionada);
 
         labelFoto = new JLabel();
         labelFoto.setIcon(imageIcon1);
-        labelFoto.setBounds(240,0,200,200);
+        labelFoto.setBounds(240, 0, 200, 200);
 
         getContentPane().add(labelFoto);
+
+        botaoEscolherFoto = new JButton("Alterar Foto");
+
+        botaoEscolherFoto.setBounds(260, 200, 160, 20);
+        botaoEscolherFoto.addActionListener(botaoEscolherFotoActionListener());
+
+        getContentPane().add(botaoEscolherFoto);
+    }
+
+    private ActionListener botaoEscolherFotoActionListener() {
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                int opcao = fileChooser.showOpenDialog(TelaCadastro.this);
+
+                if (opcao == JFileChooser.APPROVE_OPTION) {
+                    File arquivoSelecionado = fileChooser.getSelectedFile();
+                    String caminho = arquivoSelecionado.getAbsolutePath();
+                    ImageIcon imageIcon = new ImageIcon(caminho);
+                    labelFoto.setIcon(imageIcon);
+                }
+            }
+        };
     }
 
     private ActionListener botaoSalvarActionListener() {
