@@ -8,14 +8,17 @@ import io.github.cursodsousa.clientes.logicanegocio.LogicaCadastroClienteFake;
 import io.github.cursodsousa.clientes.logicanegocio.LogicaCadastroMemoria;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class TelaCadastro extends JFrame {
 
     private JLabel labelNome;
     private JLabel labelCpf;
     private JLabel labelSexo;
+    private JLabel labelFoto;
 
     private JTextField campoNome;
     private JTextField campoCpf;
@@ -81,7 +84,19 @@ public class TelaCadastro extends JFrame {
     }
 
     private void adicionarComponentesFoto() {
+        String caminhoArquivo = "/io/github/cursodsousa/clientes/apresentacao/img.jpg";
+        URL localizacao = getClass().getResource(caminhoArquivo);
+        ImageIcon imageIcon = new ImageIcon(localizacao);
 
+        Image imageRedimensionada = imageIcon.getImage().getScaledInstance(200,200,Image.SCALE_SMOOTH);
+
+        ImageIcon imageIcon1 = new ImageIcon(imageRedimensionada);
+
+        labelFoto = new JLabel();
+        labelFoto.setIcon(imageIcon1);
+        labelFoto.setBounds(240,0,200,200);
+
+        getContentPane().add(labelFoto);
     }
 
     private ActionListener botaoSalvarActionListener() {
