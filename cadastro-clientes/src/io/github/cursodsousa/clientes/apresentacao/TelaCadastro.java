@@ -6,6 +6,7 @@ import io.github.cursodsousa.clientes.dominio.exception.CpfInvalidoException;
 import io.github.cursodsousa.clientes.logicanegocio.Cadastro;
 import io.github.cursodsousa.clientes.logicanegocio.LogicaCadastroClienteFake;
 import io.github.cursodsousa.clientes.logicanegocio.LogicaCadastroMemoria;
+import io.github.cursodsousa.clientes.utilitario.ConversorIconParaArray;
 
 import javax.swing.*;
 import java.awt.*;
@@ -133,6 +134,9 @@ public class TelaCadastro extends JFrame {
                 cliente.setNome(campoNome.getText());
                 cliente.setCpf(campoCpf.getText());
                 cliente.setSexo((TipoSexo) campoSexo.getSelectedItem());
+
+                byte[] byteArray = ConversorIconParaArray.converter(labelFoto.getIcon());
+                cliente.setFoto(byteArray);
 
                 try {
                     logicaCadastro.salvar(cliente);
